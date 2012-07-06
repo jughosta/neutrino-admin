@@ -13,7 +13,7 @@ function TemplateElement () {
 
 /**
  * Is last?.
- * @kind {boolean}
+ * @type {boolean}
  */
 TemplateElement.prototype._isLast_ = true;
 
@@ -26,7 +26,7 @@ TemplateElement.prototype.moveFromLastPosition = function () {
 
 /**
  * Value of parent template element.
- * @kind {String}
+ * @type {String}
  */
 TemplateElement.prototype._parentValue_ = '';
 
@@ -48,9 +48,21 @@ TemplateElement.prototype.getParentValue = function () {
 
 /**
  * Space symbol in template.
- * @kind {String}
+ * @type {String}
  */
 TemplateElement.prototype._spaceSymbol_ = ' ';
+
+/**
+ * Right brace symbol in template.
+ * @type {String}
+ */
+TemplateElement.prototype._rightBraceSymbol_ = '}';
+
+/**
+ * Left brace symbol in template.
+ * @type {String}
+ */
+TemplateElement.prototype._leftBraceSymbol_ = '{';
 
 /**
  * Render template

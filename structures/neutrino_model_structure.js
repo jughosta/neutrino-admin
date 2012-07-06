@@ -19,7 +19,7 @@ function NeutrinoModelStructure () {
 
 /**
  * Current model name.
- * @kind {String}
+ * @type {String}
  */
 NeutrinoModelStructure.prototype.name = 'ModelName';
 
@@ -44,16 +44,17 @@ NeutrinoModelStructure.prototype.propertyKinds = {
 /**
  * Add property to current model.
  * @param {String} name
+ * @param {String} type
  * @param {.} value
  * @param {Boolean} isPrivate
  * @return {EntityStructure}
  */
-NeutrinoModelStructure.prototype.addProperty = function (name, value, isPrivate) {
+NeutrinoModelStructure.prototype.addProperty = function (name, type, value, isPrivate) {
 
 	if (!name) {
-		//TODO: throw error
+		throw new Error('Property name for NeutrinoModel is not set');
 	}
-	return this.addProperty_(new PropertyElement(name, value, isPrivate, this.propertyKinds.DEFAULT));
+	return this.addProperty_(new PropertyElement(name, type, value, isPrivate, this.propertyKinds.DEFAULT));
 };
 
 /**
@@ -65,7 +66,7 @@ NeutrinoModelStructure.prototype.addProperty = function (name, value, isPrivate)
 NeutrinoModelStructure.prototype.addMethod = function (name, isPrivate) {
 
 	if (!name) {
-		//TODO: throw error
+		throw new Error('Method name for NeutrinoModel is not set');
 	}
 	return this.addMethod_(new MethodElement(name, [], isPrivate, this.methodKinds.DEFAULT));
 };
@@ -80,7 +81,7 @@ NeutrinoModelStructure.prototype.addMethod = function (name, isPrivate) {
 NeutrinoModelStructure.prototype.addParameterToMethod = function (name, type, methodName) {
 
 	if (!name || !type || !methodName) {
-		//TODO: throw error
+		throw new Error('Parameter name, type, method name for NeutrinoModel are not set');
 	}
 	return this.addParameterToMethod_(new ParameterElement(name, type), this.methodKinds.DEFAULT, methodName);
 };
@@ -94,7 +95,7 @@ NeutrinoModelStructure.prototype.addParameterToMethod = function (name, type, me
 NeutrinoModelStructure.prototype.addSendDataMethod = function (name, isPrivate) {
 
 	if (!name) {
-		//TODO: throw error
+		throw new Error('Method name for NeutrinoModel is not set');
 	}
 	return this.addMethod_(new MethodElement(name, [], isPrivate, this.methodKinds.SEND_DATA));
 };
@@ -108,7 +109,7 @@ NeutrinoModelStructure.prototype.addSendDataMethod = function (name, isPrivate) 
 NeutrinoModelStructure.prototype.addNotifyToUserMethod = function (name, isPrivate) {
 
 	if (!name) {
-		//TODO: throw error
+		throw new Error('Method name for NeutrinoModel is not set');
 	}
 	return this.addMethod_(new MethodElement(name, [], isPrivate, this.methodKinds.NOTIFY_TO_USER));
 };

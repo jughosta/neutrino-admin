@@ -8,15 +8,17 @@ util.inherits(PropertyElement, TemplateElement);
 /**
  * Create new instance of property.
  * @param {String} name
+ * @param {String} type
  * @param {.} value
  * @param {Boolean} isPrivate
  * @param {String} kind
  * @constructor
  */
-function PropertyElement (name, value, isPrivate, kind) {
+function PropertyElement (name, type, value, isPrivate, kind) {
 
 	this.name = name || this.name;
 	this.value = value || this.value;
+	this.type = type || this.type;
 	this.kind = kind || this.kind;
 	this.isPrivate = isPrivate || false;
 }
@@ -31,13 +33,19 @@ PropertyElement.prototype.name = 'PropertyDefaultName';
  * Property value.
  * @type {String}
  */
-PropertyElement.prototype.value = 'PropertyDefaultValue';
+PropertyElement.prototype.value = '"PropertyDefaultValue"';
 
 /**
  * Property kind.
  * @type {String}
  */
 PropertyElement.prototype.kind = 'PropertyDefaultKind';
+
+/**
+ * Property type.
+ * @type {String}
+ */
+PropertyElement.prototype.type = 'PropertyDefaultType';
 
 /**
  * Private state of property.

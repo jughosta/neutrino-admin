@@ -11,6 +11,10 @@ function {{name}}(config, modelFileName) {
 
     neutrino.mvc.ModelBase.call(this, config, modelFileName, {
     {{#properties.$}}
+
+        /**
+         * @type {{_leftBraceSymbol_}}{{type}}{{_rightBraceSymbol_}}
+         */
         {{name}}{{#isPrivate}}_{{/isPrivate}}: {{{value}}}{{^_isLast_}},{{/_isLast_}}{{#_isLast_}}
     {{/_isLast_}}
     {{/properties.$}}
@@ -23,12 +27,24 @@ function {{name}}(config, modelFileName) {
     });
 }
 {{#methods.$}}
-{{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function (callback{{#parameters}}, {{type}} {{name}}{{/parameters}}) {
+/**
+ *
+ {{#isPrivate}}* @private
+ {{/isPrivate}}
+ * @type {Function} callback
+ {{#parameters}}* @type {{_leftBraceSymbol_}}{{type}}{{_rightBraceSymbol_}} {{name}}
+ {{/parameters}}*/
+{{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function (callback{{#parameters}}, {{name}}{{/parameters}}) {
     //processing args and invoke callback with result
 };
 {{/methods.$}}
 
 {{#methods.$sendData}}
+/**
+ *
+ {{#isPrivate}}* @private
+ {{/isPrivate}}
+ */
 {{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
     var serviceName = '',
         dataObject = {};
@@ -37,6 +53,11 @@ function {{name}}(config, modelFileName) {
 {{/methods.$sendData}}
 
 {{#methods.$notify}}
+/**
+ *
+ {{#isPrivate}}* @private
+ {{/isPrivate}}
+ */
 {{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
     var sessionId = '',
         dataObject = {};

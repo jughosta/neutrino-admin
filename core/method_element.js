@@ -23,25 +23,25 @@ function MethodElement (name, parameters, isPrivate, kind) {
 
 /**
  * Method name.
- * @kind {String}
+ * @type {String}
  */
 MethodElement.prototype.name = 'MethodDefaultName';
 
 /**
  * Method kind.
- * @kind {String}
+ * @type {String}
  */
 MethodElement.prototype.kind = 'MethodDefaultKind';
 
 /**
  * Private state of method.
- * @kind {Boolean}
+ * @type {Boolean}
  */
 MethodElement.prototype.isPrivate = false;
 
 /**
  * Arguments of method.
- * @kind {String[]}
+ * @type {String[]}
  */
 MethodElement.prototype.parameters = [];
 

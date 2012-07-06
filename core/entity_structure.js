@@ -19,19 +19,19 @@ function EntityStructure (name) {
 
 /**
  * Name of entity.
- * @kind {String}
+ * @type {String}
  */
 EntityStructure.prototype.name = 'EntityDefaultName';
 
 /**
  * Properties of entity.
- * @kind {Object}
+ * @type {Object}
  */
 EntityStructure.prototype.properties = {};
 
 /**
  * Methods of entity.
- * @kind {Object}
+ * @type {Object}
  */
 EntityStructure.prototype.methods = {};
 
@@ -39,11 +39,12 @@ EntityStructure.prototype.methods = {};
  * Add property to current entity.
  * @param {PropertyElement} property
  * @return {EntityStructure}
+ * @private
  */
 EntityStructure.prototype.addProperty_ = function (property) {
 
 	if (!property || !property.name || !property.kind) {
-		//TODO: throw error
+		throw new Error('Incorrect property');
 	}
 
 	var properties = this.properties[property.kind];
@@ -64,11 +65,12 @@ EntityStructure.prototype.addProperty_ = function (property) {
  * Add method to current entity.
  * @param {MethodElement} method
  * @return {EntityStructure}
+ * @private
  */
 EntityStructure.prototype.addMethod_ = function (method) {
 
 	if (!method || !method.name || !method.kind) {
-		//TODO: throw error
+		throw new Error('Incorrect Method');
 	}
 
 	var methods = this.methods[method.kind];
@@ -93,11 +95,12 @@ EntityStructure.prototype.addMethod_ = function (method) {
  * @param {String} methodType
  * @param {String} methodName
  * @return {EntityStructure}
+ * @private
  */
 EntityStructure.prototype.addParameterToMethod_ = function (parameter, methodType, methodName) {
 
 	if (!parameter || !methodType) {
-		//TODO: throw error
+		throw new Error('Incorrect parameter for method');
 	}
 
 	var methods = this.methods[methodType];
@@ -127,11 +130,12 @@ EntityStructure.prototype.addParameterToMethod_ = function (parameter, methodTyp
  * @param {ParameterElement} parameter
  * @param {MethodElement[]} methods
  * @param {Number} index
+ * @private
  */
 EntityStructure.prototype.addParameterToParametersOfMethod_ = function (parameter, methods, index) {
 
 	if (!parameter || !methods) {
-		//TODO: throw error
+		throw new Error('Incorrect parameter');
 	}
 
 	if (typeof index === 'undefined') {

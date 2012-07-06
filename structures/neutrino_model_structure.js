@@ -10,10 +10,14 @@ util.inherits(NeutrinoModelStructure, EntityStructure);
 
 /**
  * Create new instance of neutrino model structure.
+ * @param {String} name
  * @constructor
  */
-function NeutrinoModelStructure () {
+function NeutrinoModelStructure (name) {
 
+	if (!name) {
+		throw new Error('Name for NeutrinoModel is not set');
+	}
 	EntityStructure.apply(this, arguments);
 }
 
@@ -80,8 +84,8 @@ NeutrinoModelStructure.prototype.addMethod = function (name, isPrivate) {
  */
 NeutrinoModelStructure.prototype.addParameterToMethod = function (name, type, methodName) {
 
-	if (!name || !type || !methodName) {
-		throw new Error('Parameter name, type, method name for NeutrinoModel are not set');
+	if (!name) {
+		throw new Error('Parameter name for NeutrinoModel is not set');
 	}
 	return this.addParameterToMethod_(new ParameterElement(name, type), this.methodKinds.DEFAULT, methodName);
 };

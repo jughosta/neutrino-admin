@@ -17,8 +17,7 @@ http.createServer(function (req, res) {
 			.addParameterToMethod('arg20', 'Number')
 		.addSendDataMethod('MySendDataMethod', false)
 		.addSendDataMethod('MySendDataMethod2', true)
-		.addNotifyToUserMethod('MyNotifyMethod', true)
-		.addNotifyToUserMethod();
+		.addNotifyToUserMethod('MyNotifyMethod');
 
 	model.render('./templates/neutrino_model.tpl', function (generatedModel) {
 		res.end(generatedModel);

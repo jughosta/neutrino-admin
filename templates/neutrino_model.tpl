@@ -1,11 +1,11 @@
-module.exports = {{name}};
+module.exports = {{entityName}}Model;
 
 var util = require('util'),
     modelEvents = neutrino.mvc.ModelBase.events;
 
-util.inherits({{name}}, neutrino.mvc.ModelBase);
+util.inherits({{entityName}}Model, neutrino.mvc.ModelBase);
 
-function {{name}}(config, modelFileName) {
+function {{entityName}}Model(config, modelFileName) {
 
     // model name will be used for model state saving in database, by default it's a filename
 
@@ -13,7 +13,7 @@ function {{name}}(config, modelFileName) {
     {{#properties.$}}
 
         /**
-         * @type {{_leftBraceSymbol_}}{{type}}{{_rightBraceSymbol_}}
+         * @type {{_leftBraceSymbol_}}{{type.signature}}{{_rightBraceSymbol_}}
          */
         {{name}}{{#isPrivate}}_{{/isPrivate}}: {{{value}}}{{^_isLast_}},{{/_isLast_}}{{#_isLast_}}
     {{/_isLast_}}
@@ -31,10 +31,10 @@ function {{name}}(config, modelFileName) {
  *
  {{#isPrivate}}* @private
  {{/isPrivate}}
- * @type {Function} callback
- {{#parameters}}* @type {{_leftBraceSymbol_}}{{type}}{{_rightBraceSymbol_}} {{name}}
+ * @param {Function} callback
+ {{#parameters}}* @param {{_leftBraceSymbol_}}{{type.signature}}{{_rightBraceSymbol_}} {{name}}
  {{/parameters}}*/
-{{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function (callback{{#parameters}}, {{name}}{{/parameters}}) {
+{{entityName}}Model.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function (callback{{#parameters}}, {{name}}{{/parameters}}) {
     //processing args and invoke callback with result
 };
 {{/methods.$}}
@@ -45,7 +45,7 @@ function {{name}}(config, modelFileName) {
  {{#isPrivate}}* @private
  {{/isPrivate}}
  */
-{{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
+{{entityName}}Model.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
     var serviceName = '',
         dataObject = {};
     this.emit(modelEvents.sentToService, serviceName, dataObject);
@@ -58,7 +58,7 @@ function {{name}}(config, modelFileName) {
  {{#isPrivate}}* @private
  {{/isPrivate}}
  */
-{{getEntityName}}.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
+{{entityName}}Model.prototype.{{name}}{{#isPrivate}}_{{/isPrivate}}{{_spaceSymbol_}}= function () {
     var sessionId = '',
         dataObject = {};
     this.emit(modelEvents.notify, sessionId, dataObject);

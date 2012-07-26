@@ -1,20 +1,22 @@
 module.exports = ParameterElement;
 
 var util = require('util'),
-	TemplateElement = require('./template_element.js');
+	TypedElement = require('./typed_element.js'),
+	TemplateElementBase = require('./template_element_base.js');
 
-util.inherits(ParameterElement, TemplateElement);
+util.inherits(ParameterElement, TemplateElementBase);
 
 /**
  * Create new instance of parameter.
  * @param {String} name
- * @param {String} type
+ * @param {String|Object} typeOrParams
  * @constructor
  */
-function ParameterElement (name, type) {
+function ParameterElement (name, typeOrParams) {
 
 	this.name = name || this.name;
-	this.type = type || this.type;
+
+	this.type = new TypedElement(typeOrParams);
 }
 
 /**
@@ -24,7 +26,7 @@ function ParameterElement (name, type) {
 ParameterElement.prototype.name = 'ParameterDefaultName';
 
 /**
- * Parameter type.
- * @type {String}
+ * Parameter type params.
+ * @type {Object}
  */
-ParameterElement.prototype.type = 'ParameterDefaultType';
+ParameterElement.prototype.type = null;

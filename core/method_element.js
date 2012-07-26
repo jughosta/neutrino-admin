@@ -1,9 +1,9 @@
 module.exports = MethodElement;
 
 var util = require('util'),
-	TemplateElement = require('./template_element.js');
+	TemplateElementBase = require('./template_element_base.js');
 
-util.inherits(MethodElement, TemplateElement);
+util.inherits(MethodElement, TemplateElementBase);
 
 /**
  * Create new instance of method.
@@ -44,19 +44,3 @@ MethodElement.prototype.isPrivate = false;
  * @type {String[]}
  */
 MethodElement.prototype.parameters = [];
-
-/**
- * Link entity name to method.
- * @param {String} name
- */
-MethodElement.prototype.linkEntityName = function (name) {
-	this.setParentValue(name);
-};
-
-/**
- * Get entity name for method.
- * @return {String}
- */
-MethodElement.prototype.getEntityName = function () {
-	return this.getParentValue();
-};

@@ -1,18 +1,18 @@
-module.exports = EntityStructure;
+module.exports = EntityBase;
 
 var util = require('util'),
-	TemplateElement = require('./template_element.js');
+	TemplateElementBase = require('./template_element_base.js');
 
-util.inherits(EntityStructure, TemplateElement);
+util.inherits(EntityBase, TemplateElementBase);
 
 /**
  * Create new instance of entity.
  * @param {String} name
  * @constructor
  */
-function EntityStructure (name) {
+function EntityBase (name) {
 
-	this.name = name || this.name;
+	this.entityName = name || this.entityName;
 	this.properties = {};
 	this.methods = {};
 }
@@ -21,27 +21,27 @@ function EntityStructure (name) {
  * Name of entity.
  * @type {String}
  */
-EntityStructure.prototype.name = 'EntityDefaultName';
+EntityBase.prototype.entityName = 'EntityDefaultName';
 
 /**
  * Properties of entity.
  * @type {Object}
  */
-EntityStructure.prototype.properties = {};
+EntityBase.prototype.properties = {};
 
 /**
  * Methods of entity.
  * @type {Object}
  */
-EntityStructure.prototype.methods = {};
+EntityBase.prototype.methods = {};
 
 /**
  * Add property to current entity.
  * @param {PropertyElement} property
- * @return {EntityStructure}
+ * @return {EntityBase}
  * @private
  */
-EntityStructure.prototype.addProperty_ = function (property) {
+EntityBase.prototype.addProperty_ = function (property) {
 
 	if (!property || !property.name || !property.kind) {
 		throw new Error('Incorrect property');
@@ -64,10 +64,10 @@ EntityStructure.prototype.addProperty_ = function (property) {
 /**
  * Add method to current entity.
  * @param {MethodElement} method
- * @return {EntityStructure}
+ * @return {EntityBase}
  * @private
  */
-EntityStructure.prototype.addMethod_ = function (method) {
+EntityBase.prototype.addMethod_ = function (method) {
 
 	if (!method || !method.name || !method.kind) {
 		throw new Error('Incorrect Method');
@@ -83,7 +83,6 @@ EntityStructure.prototype.addMethod_ = function (method) {
 		methods[methods.length - 1].moveFromLastPosition();
 	}
 
-	method.linkEntityName(this.name);
 	methods.push(method);
 
 	return this;
@@ -94,10 +93,10 @@ EntityStructure.prototype.addMethod_ = function (method) {
  * @param {ParameterElement} parameter
  * @param {String} methodType
  * @param {String} methodName
- * @return {EntityStructure}
+ * @return {EntityBase}
  * @private
  */
-EntityStructure.prototype.addParameterToMethod_ = function (parameter, methodType, methodName) {
+EntityBase.prototype.addParameterToMethod_ = function (parameter, methodType, methodName) {
 
 	if (!parameter || !methodType) {
 		throw new Error('Incorrect parameter for method');
@@ -132,7 +131,7 @@ EntityStructure.prototype.addParameterToMethod_ = function (parameter, methodTyp
  * @param {Number} index
  * @private
  */
-EntityStructure.prototype.addParameterToParametersOfMethod_ = function (parameter, methods, index) {
+EntityBase.prototype.addParameterToParametersOfMethod_ = function (parameter, methods, index) {
 
 	if (!parameter || !methods) {
 		throw new Error('Incorrect parameter');
